@@ -40,16 +40,24 @@ var create = function(){
 // update game state each frame, 60fps -> update goi khoang 60 lan 1s
 var update = function(){
   if(Nakama.keyboard.isDown(Phaser.Keyboard.UP)){
-    Nakama.player.position.y -= 10;
+    if(Nakama.player.position.y > 0){
+      Nakama.player.position.y -= 10;
+    }
   }
   if (Nakama.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-    Nakama.player.position.y += 10;
+    if(Nakama.player.position.y < 880){
+      Nakama.player.position.y += 10;
+    }
   }
   if (Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-    Nakama.player.position.x += 10;
+    if(Nakama.player.position.x < 600){
+      Nakama.player.position.x += 10;
+    }
   }
   if (Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-    Nakama.player.position.x -= 10;
+    if(Nakama.player.position.x >= -30){
+      Nakama.player.position.x -= 10;
+    }
   }
 }
 
