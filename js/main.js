@@ -8,12 +8,20 @@ Nakama.configs = {
   MAX_WIDTH  : 640,
   MAX_HEIGHT : 960,
   PLAYER1_POS:{
-    x : 200,
+    x : 400,
     y : 800
   },
   PLAYER2_POS:{
-    x : 400,
+    x : 200,
     y : 800
+  },
+  ENEMY1_POS:{
+    x : 200,
+    y : 200
+  },
+  ENEMY2_POS:{
+    x : 300,
+    Y : 300
   }
 }
 
@@ -77,7 +85,21 @@ var create = function(){
         fire  : Phaser.Keyboard.F
       }
     )
-    //
+  )
+
+  Nakama.enemy = [];
+  Nakama.enemy.push(
+    new EnemyController(
+      Nakama.configs.ENEMY1_POS.x,
+      Nakama.configs.ENEMY1_POS.y,
+      "EnemyType1.png"
+    ),
+
+    new EnemyController(
+      Nakama.configs.ENEMY2_POS.x,
+      Nakama.configs.ENEMY2_POS.y,
+      "EnemyType2.png"
+    )
   )
 }
 
@@ -86,6 +108,10 @@ var update = function(){
   Nakama.player.forEach(function(ship){
     ship.update();
   });
+
+  Nakama.enemy.forEach(function(enemy){
+    enemy.update();
+  })
   // for (var i=0; i<Nakama.player.length ;i++){
   //   Nakama.player[i].update();
   // }

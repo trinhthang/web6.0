@@ -10,19 +10,19 @@ class ShipController {
 
   update(){
     if(Nakama.keyboard.isDown(this.configs.up)){
-      this.sprite.body.velocity.y = -ShipController.SHIP_SPEECH;
+      this.sprite.body.velocity.y = -ShipController.SHIP_SPEED;
     }
     else if (Nakama.keyboard.isDown(this.configs.down)) {
-      this.sprite.body.velocity.y = ShipController.SHIP_SPEECH;
+      this.sprite.body.velocity.y = ShipController.SHIP_SPEED;
     }
     else{
       this.sprite.body.velocity.y = 0;
     }
     if (Nakama.keyboard.isDown(this.configs.right)) {
-      this.sprite.body.velocity.x = ShipController.SHIP_SPEECH;
+      this.sprite.body.velocity.x = ShipController.SHIP_SPEED;
     }
     else if (Nakama.keyboard.isDown(this.configs.left)) {
-      this.sprite.body.velocity.x = -ShipController.SHIP_SPEECH;
+      this.sprite.body.velocity.x = -ShipController.SHIP_SPEED;
     }
     else{
       this.sprite.body.velocity.x = 0;
@@ -30,4 +30,4 @@ class ShipController {
 
   }
 }
-ShipController.SHIP_SPEECH = 400;
+ShipController.SHIP_SPEED = 400;
