@@ -50,19 +50,16 @@ class ShipController {
 
   fire(){
     ShipController.homingBullet.push(
-      createHomingBullet();
+      new HomingBulletController(
+        this.sprite.position.x,
+        this.sprite.position.y,
+        "BulletType2.png"
+      )
     );
     this.fired = true;
     // this.createBullet(new Phaser.Point( 0,-1));
     // this.createBullet(new Phaser.Point( 1,-5));
     // this.createBullet(new Phaser.Point(-1,-5));
-  }
-  createHomingBullet(){
-    new HomingBulletController(
-      this.sprite.position.x,
-      this.sprite.position.y,
-      "BulletType2.png"
-    )
   }
 
   createBullet(direction){
