@@ -6,7 +6,7 @@ class EnemyController{
     this.sprite.collideWorldBounds = true;
     this.configs = configs;
     this.sprite.health = this.configs.health;
-    console.log(this.configs.health);
+    // console.log(this.configs.health);
     this.sprite.body.velocity.x = EnemyController.ENEMY_SPEED;
   }
   update(){

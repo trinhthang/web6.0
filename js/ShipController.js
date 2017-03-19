@@ -34,6 +34,11 @@ class ShipController {
     if (Nakama.keyboard.isDown(this.configs.fire)){
       this.tryFire();
     }
+    if (this.fired){
+      ShipController.homingBullet.forEach(function(homingbullet){
+        homingbullet.update();
+      })
+    }
   }
 
   tryFire(){
@@ -44,11 +49,20 @@ class ShipController {
   }
 
   fire(){
-      this.createBullet(new Phaser.Point( 0,-1));
-      this.createBullet(new Phaser.Point( 1,-5));
-      this.createBullet(new Phaser.Point(-1,-5));
-      this.createBullet(new Phaser.Point( 1,-2));
-      this.createBullet(new Phaser.Point(-1,-2));
+    ShipController.homingBullet.push(
+      createHomingBullet();
+    );
+    this.fired = true;
+    // this.createBullet(new Phaser.Point( 0,-1));
+    // this.createBullet(new Phaser.Point( 1,-5));
+    // this.createBullet(new Phaser.Point(-1,-5));
+  }
+  createHomingBullet(){
+    new HomingBulletController(
+      this.sprite.position.x,
+      this.sprite.position.y,
+      "BulletType2.png"
+    )
   }
 
   createBullet(direction){
@@ -61,3 +75,4 @@ class ShipController {
   }
 }
 ShipController.SHIP_SPEED = 400;
+ShipController.homingBullet = [];
